@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101712">
+<title>PandaVerse | Universo Escolar</title>
+<style>
+:root {
+  --bg:#0b100e;
+  --panel:#141d18;
+  --panel2:#1b2820;
+  --green:#45e69a;
+  --white:#f5fff8;
+  --muted:#a6b6ab;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:Arial,sans-serif;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+header{
+  position:sticky;top:0;z-index:10;
+  background:#101712ed;backdrop-filter:blur(12px);
+  border-bottom:1px solid #28372e;
+}
+.nav{
+  max-width:1150px;margin:auto;padding:15px 22px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:15px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-icon{font-size:35px}
+.brand h2{margin:0;font-size:23px;color:var(--green)}
+.brand small{color:var(--muted);font-size:10px;letter-spacing:2px}
+nav{display:flex;gap:20px;flex-wrap:wrap}
+nav a{font-size:13px;color:#d5e2d8}
+nav a:hover{color:var(--green)}
+.hero{
+  max-width:1150px;margin:auto;padding:75px 22px 65px;
+  display:grid;grid-template-columns:1.2fr .8fr;
+  align-items:center;gap:35px;
+}
+.tag{
+  display:inline-block;background:#183b2b;color:var(--green);
+  padding:9px 13px;border-radius:30px;font-size:12px;
+}
+.hero h1{font-size:clamp(38px,6vw,65px);line-height:1.06;margin:22px 0}
+.hero h1 span{color:var(--green)}
+.hero p{color:var(--muted);line-height:1.8;max-width:540px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  display:inline-block;padding:13px 20px;border-radius:9px;
+  font-weight:bold;font-size:13px;border:1px solid #34443a;
+}
+.primary{background:var(--green);color:#07140c;border:0}
+.secondary{background:var(--panel);color:white}
+.mascot{
+  background:radial-gradient(circle,#244c34,#14251a 55%,#101712);
+  border:1px solid #31563d;border-radius:30px;
+  min-height:320px;display:grid;place-items:center;
+  position:relative;overflow:hidden;
+}
+.panda{font-size:150px;filter:drop-shadow(0 12px 18px #0008)}
+.mascot-label{
+  position:absolute;bottom:18px;color:#bcebd0;
+  font-size:12px;letter-spacing:2px
+}
+.stats{
+  max-width:1100px;margin:0 auto 30px;padding:0 22px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+}
+.stat{
+  background:var(--panel);border:1px solid #28372e;
+  padding:19px;border-radius:14px;text-align:center;
+}
+.stat strong{display:block;color:var(--green);font-size:24px}
+.stat span{font-size:12px;color:var(--muted)}
+section.content{
+  max-width:1100px;margin:auto;padding:55px 22px;
+}
+.section-head{margin-bottom:25px}
+.section-head small{color:var(--green);letter-spacing:2px}
+.section-head h2{font-size:30px;margin:9px 0}
+.section-head p{color:var(--muted);line-height:1.6}
+.grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:17px;
+}
+.card{
+  background:var(--panel);border:1px solid #29382e;
+  border-radius:16px;padding:22px;transition:.2s;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--green)}
+.card-icon{font-size:35px}
+.card h3{margin:14px 0 8px}
+.card p{font-size:13px;color:var(--muted);line-height:1.7}
+.card a{color:var(--green);font-size:13px;font-weight:bold}
+.book-cover{
+  height:135px;border-radius:10px;display:grid;
+  place-items:center;font-size:55px;
+  background:linear-gradient(140deg,#235c3c,#172a20);
+}
+.game-cover{
+  height:135px;border-radius:10px;display:grid;
+  place-items:center;font-size:55px;
+  background:linear-gradient(140deg,#263b65,#18243b);
+}
+.notice{
+  background:linear-gradient(110deg,#163b28,#18271d);
+  border:1px solid #376b49;border-radius:18px;
+  padding:28px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+.notice p{color:#c6dfce;line-height:1.6}
+footer{
+  border-top:1px solid #29382e;padding:30px 22px;
+  text-align:center;color:var(--muted);font-size:12px;
+}
+footer strong{color:var(--green)}
+@media(max-width:720px){
+  .hero{grid-template-columns:1fr;padding-top:45px}
+  .mascot{min-height:230px}
+  .panda{font-size:115px}
+  .grid{grid-template-columns:1fr 1fr}
+  nav{gap:12px}
+}
+@media(max-width:430px){
+  .grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .brand h2{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#inicio" class="brand">
+      <span class="brand-icon">🐼</span>
+      <div>
+        <h2>PandaVerse</h2>
+        <small>UNIVERSO ESCOLAR</small>
+      </div>
+    </a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#biblioteca">Livros</a>
+      <a href="#jogos">Jogos</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div>
+    <span class="tag">✦ UM UNIVERSO FEITO POR ESTUDANTES</span>
+    <h1>Suas ideias.<br>Seu mundo.<br><span>PandaVerse.</span></h1>
+    <p>
+      Um espaço para descobrir talentos, explorar histórias,
+      conhecer jogos e compartilhar a criatividade dos
+      estudantes. Aqui, cada ideia pode se transformar
+      em algo extraordinário!
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="#explorar">EXPLORAR UNIVERSO →</a>
+      <a class="btn secondary" href="#sobre">CONHECER O PROJETO</a>
+    </div>
+  </div>
+  <div class="mascot">
+    <div class="panda" role="img" aria-label="Mascote panda">🐼</div>
+    <div class="mascot-label">CRIATIVIDADE SEM LIMITES</div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><strong>📚</strong><span>Biblioteca digital</span></div>
+  <div class="stat"><strong>🎮</strong><span>Universo dos jogos</span></div>
+  <div class="stat"><strong>✨</strong><span>Talentos estudantis</span></div>
+</div>
+
+<section class="content" id="explorar">
+  <div class="section-head">
+    <small>EXPLORE</small>
+    <h2>O que você encontra por aqui?</h2>
+    <p>Descubra diferentes espaços do nosso universo.</p>
+  </div>
+  <div class="grid">
+    <a class="card" href="#biblioteca">
+      <div class="card-icon">📚</div>
+      <h3>Biblioteca</h3>
+      <p>Histórias, contos, poesias e livros escritos pelos alunos.</p>
+      <span style="color:var(--green)">Explorar livros →</span>
+    </a>
+    <a class="card" href="#jogos">
+      <div class="card-icon">🎮</div>
+      <h3>Jogos</h3>
+      <p>Descubra jogos e experiências digitais para se divertir.</p>
+      <span style="color:var(--green)">Explorar jogos →</span>
+    </a>
+    <a class="card" href="#projetos">
+      <div class="card-icon">🎨</div>
+      <h3>Projetos</h3>
+      <p>Conheça trabalhos, desenhos, ideias e criações dos estudantes.</p>
+      <span style="color:var(--green)">Ver projetos →</span>
+    </a>
+  </div>
+</section>
+
+<section class="content" id="biblioteca">
+  <div class="section-head">
+    <small>LEITURA E IMAGINAÇÃO</small>
+    <h2>📚 Biblioteca Digital</h2>
+    <p>Um lugar onde as palavras dos estudantes ganham vida.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="book-cover">📖</div>
+      <h3>Histórias dos alunos</h3>
+      <p>Espaço para contos e histórias autorais.</p>
+      <span style="color:var(--green)">Em breve</span>
+    </div>
+    <div class="card">
+      <div class="book-cover">✍️</div>
+      <h3>Poemas e poesias</h3>
+      <p>Palavras, sentimentos e criatividade.</p>
+      <span style="color:var(--green)">Em breve</span>
+    </div>
+    <div class="card">
+      <div class="book-cover">📕</div>
+      <h3>Livros publicados</h3>
+      <p>Conheça as obras produzidas pelos estudantes.</p>
+      <span style="color:var(--green)">Em breve</span>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="jogos">
+  <div class="section-head">
+    <small>DIVERSÃO E TECNOLOGIA</small>
+    <h2>🎮 Área de Jogos</h2>
+    <p>Um espaço para descobrir jogos e criações digitais.</p>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="game-cover">🧩</div>
+      <h3>Desafios de lógica</h3>
+      <p>Jogos para testar o raciocínio.</p>
+      <span style="color:var(--green)">Em breve</span>
+    </div>
+    <div class="card">
+      <div class="game-cover">🚀</div>
+      <h3>Jogos criados por alunos</h3>
+      <p>Experiências desenvolvidas pelos estudantes.</p>
+      <span style="color:var(--green)">Em breve</span>
+    </div>
+    <div class="card">
+      <div class="game-cover">🎯</div>
+      <h3>Jogos educativos</h3>
+      <p>Aprenda enquanto se diverte.</p>
+      <span style="color:var(--green)">Em breve</span>
+    </div>
+  </div>
+</section>
+
+<section class="content" id="projetos">
+  <div class="section-head">
+    <small>CRIATIVIDADE EM AÇÃO</small>
+    <h2>🎨 Projetos dos Estudantes</h2>
+    <p>Um espaço para mostrar tudo aquilo que os alunos são capazes de criar.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="card-icon">🖼️</div><h3>Arte e desenhos</h3><p>Produções artísticas e ilustrações.</p></div>
+    <div class="card"><div class="card-icon">💡</div><h3>Ideias e invenções</h3><p>Projetos criativos e experiências.</p></div>
+    <div class="card"><div class="card-icon">💻</div><h3>Tecnologia</h3><p>Programação e projetos digitais.</p></div>
+  </div>
+</section>
+
+<section class="content" id="sobre">
+  <div class="notice">
+    <div>
+      <small style="color:var(--green);letter-spacing:2px">NOSSA MISSÃO</small>
+      <h2>Um universo de possibilidades!</h2>
+      <p>
+        O PandaVerse é um espaço de valorização da criatividade,
+        da leitura, da tecnologia e dos talentos dos estudantes.
+        Cada aluno tem algo especial para compartilhar.
+      </p>
+    </div>
+    <div style="font-size:65px">🐼</div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div style="font-size:28px">🐼</div>
+  <p><strong>PandaVerse</strong> — Onde a criatividade ganha vida.</p>
+  <p>Projeto de criatividade e conhecimento escolar.</p>
+  <p>© <span id="ano"></span> PandaVerse</p>
+</footer>
+
+<script>
+document.getElementById("ano").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
